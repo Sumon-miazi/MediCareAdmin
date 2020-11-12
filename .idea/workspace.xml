@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="294cc906-9439-4ba8-8a69-88c03c0be223" name="Default Changelist" comment="#Added blood donor registration in Patient and BloodDonor controller">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="composer.json" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Sumon-miazi &lt;sumonmiazi59@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
+      <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-cors" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/larapack/hooks" />
+      <path value="$PROJECT_DIR$/vendor/larapack/voyager-hooks" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/arrilot/laravel-widgets" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/larapack/doctrine-support" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/tcg/voyager" />
+      <path value="$PROJECT_DIR$/vendor/google/crc32" />
+      <path value="$PROJECT_DIR$/vendor/google/cloud-storage" />
+      <path value="$PROJECT_DIR$/vendor/google/cloud-core" />
+      <path value="$PROJECT_DIR$/vendor/google/auth" />
+      <path value="$PROJECT_DIR$/vendor/riverline/multipart-parser" />
+      <path value="$PROJECT_DIR$/vendor/fig/http-message-util" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/mtdowling/jmespath.php" />
+      <path value="$PROJECT_DIR$/vendor/kreait/firebase-php" />
+      <path value="$PROJECT_DIR$/vendor/kreait/laravel-firebase" />
+      <path value="$PROJECT_DIR$/vendor/kreait/clock" />
+      <path value="$PROJECT_DIR$/vendor/kreait/firebase-tokens" />
+      <path value="$PROJECT_DIR$/vendor/giggsey/locale" />
+      <path value="$PROJECT_DIR$/vendor/giggsey/libphonenumber-for-php" />
+      <path value="$PROJECT_DIR$/vendor/rize/uri-template" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1ganlv1pRAOvwvsl7TLuPhwBAVE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="294cc906-9439-4ba8-8a69-88c03c0be223" name="Default Changelist" comment="" />
+      <created>1598361725736</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598361725736</updated>
+      <workItem from="1598361727675" duration="78000" />
+      <workItem from="1598361825509" duration="3196000" />
+      <workItem from="1598858564127" duration="2058000" />
+      <workItem from="1600732123493" duration="236000" />
+      <workItem from="1600734340287" duration="646000" />
+      <workItem from="1600757936762" duration="2840000" />
+      <workItem from="1602313258885" duration="328000" />
+      <workItem from="1602557310241" duration="5964000" />
+      <workItem from="1602579535835" duration="1425000" />
+      <workItem from="1603107461615" duration="982000" />
+      <workItem from="1603171085977" duration="644000" />
+      <workItem from="1603187188821" duration="5447000" />
+      <workItem from="1603207269953" duration="1282000" />
+      <workItem from="1603208962448" duration="335000" />
+      <workItem from="1603263818622" duration="5220000" />
+      <workItem from="1603284838025" duration="392000" />
+      <workItem from="1603361309875" duration="2684000" />
+      <workItem from="1603561475364" duration="1424000" />
+      <workItem from="1603608191087" duration="931000" />
+      <workItem from="1603859819681" duration="6402000" />
+      <workItem from="1603993213892" duration="629000" />
+      <workItem from="1604923614198" duration="2613000" />
+      <workItem from="1604936340692" duration="4482000" />
+      <workItem from="1604965762418" duration="4719000" />
+      <workItem from="1605079223421" duration="1530000" />
+      <workItem from="1605085723624" duration="605000" />
+      <workItem from="1605154168490" duration="3532000" />
+      <workItem from="1605162778538" duration="1326000" />
+    </task>
+    <task id="LOCAL-00001" summary="Opened the project in phpstorm">
+      <created>1598361974493</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598361974493</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added voyager admin panel into the project">
+      <created>1598362948227</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598362948227</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added instruction in README.md">
+      <created>1598859105325</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1598859105325</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added Patient model, controller, migration">
+      <created>1600758978535</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1600758978535</updated>
+    </task>
+    <task id="LOCAL-00005" summary="#Added routes to getAllDoctor By hospital id.&#10;#Implemented method to get all doctor by hospital id.">
+      <created>1602574492142</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1602574492142</updated>
+    </task>
+    <task id="LOCAL-00006" summary="#Added DoctorChamber controller, model and migration.&#10;#Added new routes to get all doctor chamber by doctor id.">
+      <created>1603208421547</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1603208421547</updated>
+    </task>
+    <task id="LOCAL-00007" summary="#Added AvailableDay, AvailableTime, AvailableDayDoctorChamber and AvailableDayAvailableTime migration, model, controller.&#10;#Added about and review field in Doctor migration.">
+      <created>1603285067371</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1603285067371</updated>
+    </task>
+    <task id="LOCAL-00008" summary="#Added availableDay, availableTime, availableDayDoctorChamber many to many relationship query in DoctorChamberController.php">
+      <created>1603365392636</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1603365392636</updated>
+    </task>
+    <task id="LOCAL-00009" summary="#Added Appointment model, controller, migration">
+      <created>1603562011028</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1603562011028</updated>
+    </task>
+    <task id="LOCAL-00010" summary="#Added Specialist model, controller, migration">
+      <created>1603562149250</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1603562149250</updated>
+    </task>
+    <task id="LOCAL-00011" summary="#Added DoctorSpecialist model, controller, migration for doctor-specialist many to many relationship">
+      <created>1603562278648</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1603562278648</updated>
+    </task>
+    <task id="LOCAL-00012" summary="#Added BloodDonor model, controller, migration">
+      <created>1603562649025</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1603562649025</updated>
+    </task>
+    <task id="LOCAL-00013" summary="#Added BloodBank model, controller, migration">
+      <created>1603562745865</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1603562745865</updated>
+    </task>
+    <task id="LOCAL-00014" summary="#Added uid and token field in patient migration.">
+      <created>1603608356787</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1603608356787</updated>
+    </task>
+    <task id="LOCAL-00015" summary="#Added patient sign up route">
+      <created>1603860699391</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1603860699391</updated>
+    </task>
+    <task id="LOCAL-00016" summary="#Added firebase admin sdk">
+      <created>1603872607552</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1603872607552</updated>
+    </task>
+    <task id="LOCAL-00017" summary="#Added api to get patient details and check patient account is already exist or not">
+      <created>1604939831778</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1604939831778</updated>
+    </task>
+    <task id="LOCAL-00018" summary="#Added blood donor registration in Patient and BloodDonor controller">
+      <created>1605157746281</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1605157746281</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UpdateCopyrightCheckinHandler">
+    <option name="UPDATE_COPYRIGHT" value="true" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="Opened the project in phpstorm" />
+    <MESSAGE value="Added voyager admin panel into the project" />
+    <MESSAGE value="Added instruction in README.md" />
+    <MESSAGE value="Added Patient model, controller, migration" />
+    <MESSAGE value="#Added routes to getAllDoctor By hospital id.&#10;#Implemented method to get all doctor by hospital id." />
+    <MESSAGE value="#Added DoctorChamber controller, model and migration.&#10;#Added new routes to get all doctor chamber by doctor id." />
+    <MESSAGE value="#Added AvailableDay, AvailableTime, AvailableDayDoctorChamber and AvailableDayAvailableTime migration, model, controller.&#10;#Added about and review field in Doctor migration." />
+    <MESSAGE value="#Added availableDay, availableTime, availableDayDoctorChamber many to many relationship query in DoctorChamberController.php" />
+    <MESSAGE value="#Added Appointment model, controller, migration" />
+    <MESSAGE value="#Added Specialist model, controller, migration" />
+    <MESSAGE value="#Added DoctorSpecialist model, controller, migration for doctor-specialist many to many relationship" />
+    <MESSAGE value="#Added BloodDonor model, controller, migration" />
+    <MESSAGE value="#Added BloodBank model, controller, migration" />
+    <MESSAGE value="#Added uid and token field in patient migration." />
+    <MESSAGE value="#Added patient sign up route" />
+    <MESSAGE value="#Added firebase admin sdk" />
+    <MESSAGE value="#Added api to get patient details and check patient account is already exist or not" />
+    <MESSAGE value="#Added blood donor registration in Patient and BloodDonor controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="#Added blood donor registration in Patient and BloodDonor controller" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="278" y="14" width="800" height="687" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598361918919">
+      <screen x="0" y="0" width="1366" height="705" />
+    </state>
+    <state x="278" y="14" width="800" height="687" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.705@0.0.1366.705" timestamp="1598361918919" />
+    <state x="416" y="121" width="524" height="494" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604971804815">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="416" y="112" width="524" height="494" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.708@0.0.1366.708" timestamp="1603859999765" />
+    <state x="416" y="121" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1604971804815" />
+    <state x="100" y="100" width="1166" height="508" key="DiffContextDialog" timestamp="1605163245891">
+      <screen x="0" y="0" width="1366" height="708" />
+    </state>
+    <state x="100" y="100" width="1166" height="508" key="DiffContextDialog/0.0.1366.708@0.0.1366.708" timestamp="1605163245891" />
+    <state width="1320" height="145" key="GridCell.Tab.0.bottom" timestamp="1598361802762">
+      <screen x="0" y="0" width="1366" height="705" />
+    </state>
+    <state width="1320" height="145" key="GridCell.Tab.0.bottom/0.0.1366.705@0.0.1366.705" timestamp="1598361802762" />
+    <state width="1320" height="145" key="GridCell.Tab.0.center" timestamp="1598361802762">
+      <screen x="0" y="0" width="1366" height="705" />
+    </state>
+    <state width="1320" height="145" key="GridCell.Tab.0.center/0.0.1366.705@0.0.1366.705" timestamp="1598361802762" />
+    <state width="1320" height="145" key="GridCell.Tab.0.left" timestamp="1598361802762">
+      <screen x="0" y="0" width="1366" height="705" />
+    </state>
+    <state width="1320" height="145" key="GridCell.Tab.0.left/0.0.1366.705@0.0.1366.705" timestamp="1598361802762" />
+    <state width="1320" height="145" key="GridCell.Tab.0.right" timestamp="1598361802762">
+      <screen x="0" y="0" width="1366" height="705" />
+    </state>
+    <state width="1320" height="145" key="GridCell.Tab.0.right/0.0.1366.705@0.0.1366.705" timestamp="1598361802762" />
+    <state x="512" y="0" key="RollbackChangesDialog" timestamp="1603562569993">
+      <screen x="0" y="0" width="1366" height="708" />
+    </state>
+    <state x="512" y="0" key="RollbackChangesDialog/0.0.1366.708@0.0.1366.708" timestamp="1603562569993" />
+    <state x="398" y="70" width="800" height="546" key="Vcs.Push.Dialog.v2" timestamp="1605164146501">
+      <screen x="0" y="0" width="1366" height="708" />
+    </state>
+    <state x="283" y="79" key="Vcs.Push.Dialog.v2/0.0.1366.705@0.0.1366.705" timestamp="1598362961190" />
+    <state x="283" y="79" key="Vcs.Push.Dialog.v2/0.0.1366.706@0.0.1366.706" timestamp="1598859133722" />
+    <state x="398" y="70" width="800" height="546" key="Vcs.Push.Dialog.v2/0.0.1366.708@0.0.1366.708" timestamp="1605164146501" />
+    <state x="283" y="86" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1604939841357" />
+  </component>
+</project>
