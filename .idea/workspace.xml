@@ -7,6 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="294cc906-9439-4ba8-8a69-88c03c0be223" name="Default Changelist" comment="#Added blood donor registration in Patient and BloodDonor controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BloodDonorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BloodDonorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +225,8 @@
       <workItem from="1605079223421" duration="1530000" />
       <workItem from="1605085723624" duration="605000" />
       <workItem from="1605154168490" duration="3532000" />
-      <workItem from="1605162778538" duration="1326000" />
+      <workItem from="1605162778538" duration="2031000" />
+      <workItem from="1605164882189" duration="1760000" />
     </task>
     <task id="LOCAL-00001" summary="Opened the project in phpstorm">
       <created>1598361974493</created>
@@ -438,5 +441,9 @@
     <state x="283" y="79" key="Vcs.Push.Dialog.v2/0.0.1366.706@0.0.1366.706" timestamp="1598859133722" />
     <state x="398" y="70" width="800" height="546" key="Vcs.Push.Dialog.v2/0.0.1366.708@0.0.1366.708" timestamp="1605164146501" />
     <state x="283" y="86" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1604939841357" />
+    <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605164990610">
+      <screen x="0" y="0" width="1366" height="708" />
+    </state>
+    <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.708@0.0.1366.708" timestamp="1605164990610" />
   </component>
 </project>

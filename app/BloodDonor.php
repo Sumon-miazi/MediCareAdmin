@@ -14,9 +14,8 @@ class BloodDonor extends Model
 
     protected $dates = ['lastDonate'];
 
-    public function user()
+    public function patient()
     {
-        // return $this->hasMany('App\DoctorChamber', 'doctor_id', 'id');
         return $this->belongsTo('App\Patient');
     }
 }

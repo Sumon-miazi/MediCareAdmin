@@ -33,7 +33,7 @@ Route::middleware([ApiKey::class])->group(function () {
 
     // Blood donor
     Route::post('/addBloodDonor', 'BloodDonorController@addBloodDonor');
-    Route::post('/getAllDonorList', 'BloodDonorController@getAllDonorList');
+    Route::post('/getDonorList', 'BloodDonorController@getDonorList');
 
     //Appointment
     Route::post('/bookNewAppointment', 'AppointmentController@bookNewAppointment');

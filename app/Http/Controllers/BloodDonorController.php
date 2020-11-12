@@ -10,16 +10,12 @@ use Illuminate\Http\Response;
 
 class BloodDonorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return JsonResponse
-     */
-    public function getAllDonorList()
+
+    public function getDonorList(Request $request)
     {
         $allDonor = BloodDonor::all();
         foreach ($allDonor as $donor) {
-            $donor->user;
+            $donor->patient;
         }
         return response()->json(['status' => 'true', 'data' => $allDonor, 'message' => 'All blood donor']);
     }

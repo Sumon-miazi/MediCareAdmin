@@ -19,4 +19,9 @@ class Patient extends Model
         'phone',
         'token'
     ];
+
+    public function bloodDonor()
+    {
+        return $this->hasOne('App\BloodDonor');
+    }
 }
