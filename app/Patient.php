@@ -24,4 +24,9 @@ class Patient extends Model
     {
         return $this->hasOne('App\BloodDonor');
     }
+
+    public function bloodRequest()
+    {
+        return $this->hasOne('App\BloodRequest');
+    }
 }
