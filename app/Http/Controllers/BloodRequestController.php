@@ -14,7 +14,11 @@ class BloodRequestController extends Controller
      */
     public function index()
     {
-        //
+        $bloodRequestArray = BloodRequest::all();
+        foreach ($bloodRequestArray as $bloodRequest) {
+            $bloodRequest->patient;
+        }
+        return response()->json(['status' => 'true', 'data' => $bloodRequestArray, 'message' => 'all blood request']);
     }
 
     /**

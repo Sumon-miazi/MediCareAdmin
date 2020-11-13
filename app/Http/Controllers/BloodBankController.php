@@ -13,9 +13,10 @@ class BloodBankController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function getAllBloodBank()
     {
-        //
+        $allBloodBank = BloodBank::all();
+        return response()->json(['status' => 'true', 'data' => $allBloodBank, 'message' => 'All blood bank']);
     }
 
     /**

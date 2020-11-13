@@ -35,8 +35,11 @@ Route::middleware([ApiKey::class])->group(function () {
     Route::post('/addBloodDonor', 'BloodDonorController@addBloodDonor');
     Route::post('/getDonorList', 'BloodDonorController@getDonorList');
 
+    Route::post('/getAllBloodBank', 'BloodBankController@getAllBloodBank');
+    
     // Blood request controller
     Route::post('/addNewBloodRequest', 'BloodRequestController@addNewBloodRequest');
+    Route::post('/getBloodRequest', 'BloodRequestController@index');
     
     //Appointment
     Route::post('/bookNewAppointment', 'AppointmentController@bookNewAppointment');
