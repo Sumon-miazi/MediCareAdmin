@@ -24,12 +24,15 @@ class ReportController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControll
     public function index(Request $request)
     {
 
+    if(Auth::user()->role->name == 'diagnostice'){
         $user = User::find(Auth::user()->id);
         $diagnostic_center = $user->diagnostic_center;
+    }
+
 // return $diagnostic_center;
  //       $all_reports = $diagnostic_center->reports;
 // return $all_reports;
-
+//diagnostice
 
         // GET THE SLUG, ex. 'posts', 'pages', etc.
         $slug = $this->getSlug($request);
@@ -71,7 +74,12 @@ class ReportController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControll
             if ($dataType->scope && $dataType->scope != '' && method_exists($model, 'scope'.ucfirst($dataType->scope))) {
                 $query = $model->{$dataType->scope}();
             } else {
-                $query = $model::select('*')->where('diagnostic_center_id', '=', $diagnostic_center->id);;
+                if(Auth::user()->role->name == 'diagnostice'){
+                $query = $model::select('*')->where('diagnostic_center_id', '=', $diagnostic_center->id);
+            }
+            else{
+                $query = $model::select('*');
+            }
             }
 
             // Use withTrashed() if model uses SoftDeletes and if toggle is selected
@@ -179,6 +187,5 @@ class ReportController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControll
             'showCheckboxColumn'
         ));
     }
-
 
 }
