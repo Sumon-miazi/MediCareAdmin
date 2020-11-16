@@ -36,4 +36,9 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function diagnostic_center()
+    {
+        return $this->hasOne('App\DiagnosticCenter');
+    }
 }
