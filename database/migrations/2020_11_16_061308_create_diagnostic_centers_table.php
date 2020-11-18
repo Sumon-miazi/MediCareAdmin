@@ -15,13 +15,14 @@ class CreateDiagnosticCentersTable extends Migration
     {
         Schema::create('diagnostic_centers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->string('name');
             $table->boolean('approved')->default(false);
             $table->string('image')->nullable();
             $table->string('uid')->nullable();
             $table->mediumText('services');
             $table->string('address');
+            $table->string('email');
             $table->string('phone');
             $table->string('token')->nullable();
             $table->decimal('lat', 10, 7);

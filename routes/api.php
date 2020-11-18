@@ -59,4 +59,9 @@ Route::middleware([ApiKey::class])->group(function () {
 
     //Doctor chamber route
     Route::post('/getDoctorChambersByDoctorId', 'DoctorChamberController@getDoctorChambers');
+
+
+    // Diagnostic center
+    Route::post('/signUpDiagnosticCenter', 'DiagnosticCenterController@store');
+    Route::post('/getDiagnosticCenterDataByUid', 'DiagnosticCenterController@getDiagnosticCenterDataByUid');
 });

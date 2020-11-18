@@ -165,7 +165,7 @@ class PatientController extends Controller
             return response()->json(['status' => $status, 'data' => $data ,'message' => 'user found', 'userType' => 'bloodBank']);
         }
         else if (DiagnosticCenter::where('uid', $request->uid)->exists()) {
-            $data = Patient::where('uid', $request->uid)->first();
+            $data = DiagnosticCenter::where('uid', $request->uid)->first();
             return response()->json(['status' => $status, 'data' => $data ,'message' => 'user found', 'userType' => 'diagnosticCenter']);
         }
         else {
