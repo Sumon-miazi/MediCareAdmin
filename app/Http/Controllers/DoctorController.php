@@ -6,6 +6,8 @@ use App\Doctor;
 use App\Hospital;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 
 class DoctorController extends Controller
 {
@@ -109,6 +111,24 @@ class DoctorController extends Controller
             $doctor->address = $request->get('address');
             $doctor->phone = $request->get('phone');
             $doctor->token = $request->get('token');
+
+            $url = null;
+
+            if ($request->hasFile('image') && $request->hasFile('image') != null) {
+                //  Let's do everything here
+                if ($request->file('image')->isValid()) {
+                    //
+                    $validated = $request->validate([
+                        'image' => 'mimes:jpeg,png',
+                    ]);
+                    $extension = $request->image->extension();
+                    $request->image->storeAs('/public/doctor', $request->get('uid').".".$extension);
+                    $url = Storage::url($request->get('uid').".".$extension);
+                }
+            }
+
+            $doctor->image = $url;
+
             $doctor->save();
 
             $status = true;
@@ -128,6 +148,23 @@ class DoctorController extends Controller
             'phone' => $request->get('phone'),
             'token' => $request->get('token')
         ]);
+
+        $url = null;
+
+        if ($request->hasFile('image') && $request->hasFile('image') != null) {
+            //  Let's do everything here
+            if ($request->file('image')->isValid()) {
+                //
+                $validated = $request->validate([
+                    'image' => 'mimes:jpeg,png',
+                ]);
+                $extension = $request->image->extension();
+                $request->image->storeAs('/public/doctor', $request->get('uid').".".$extension);
+                $url = Storage::url($request->get('uid').".".$extension);
+            }
+        }
+
+        $doctor->image = $url;
 
         $doctor->save();
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\BloodBank;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 
 class BloodBankController extends Controller
 {
@@ -57,18 +59,6 @@ class BloodBankController extends Controller
      */
     public function store(Request $request)
     {
-        /*
-            $table->string('name');
-            $table->string('uid')->nullable();
-            $table->string('image')->nullable();
-            $table->mediumText('about');
-            $table->mediumText('address');
-            $table->string('phone');
-            $table->string('token')->nullable();
-            $table->decimal('lat', 10, 7);
-            $table->decimal('long', 10, 7);
-            */
-
         $status = false;
         $validator = Validator()->make($request->all(), [
             'name'=>'required',
@@ -99,6 +89,24 @@ class BloodBankController extends Controller
             $bloodBank->token = $request->get('token');
             $bloodBank->lat = $request->get('lat');
             $bloodBank->long = $request->get('long');
+
+            $url = null;
+
+            if ($request->hasFile('image') && $request->hasFile('image') != null) {
+                //  Let's do everything here
+                if ($request->file('image')->isValid()) {
+                    //
+                    $validated = $request->validate([
+                        'image' => 'mimes:jpeg,png',
+                    ]);
+                    $extension = $request->image->extension();
+                    $request->image->storeAs('/public/bloodBank', $request->get('uid').".".$extension);
+                    $url = Storage::url($request->get('uid').".".$extension);
+                }
+            }
+
+            $bloodBank->image = $url;
+
             $bloodBank->save();
 
             return response()->json(['status' => $status, 'data' => $bloodBank, 'message' => 'blood bank updated successfully']);
@@ -115,6 +123,23 @@ class BloodBankController extends Controller
             'lat' =>  $request->get('lat'),
             'long' =>  $request->get('long')
         ]);
+
+        $url = null;
+
+        if ($request->hasFile('image') && $request->hasFile('image') != null) {
+            //  Let's do everything here
+            if ($request->file('image')->isValid()) {
+                //
+                $validated = $request->validate([
+                    'image' => 'mimes:jpeg,png',
+                ]);
+                $extension = $request->image->extension();
+                $request->image->storeAs('/public/bloodBank', $request->get('uid').".".$extension);
+                $url = Storage::url($request->get('uid').".".$extension);
+            }
+        }
+
+        $bloodBank->image = $url;
 
         $bloodBank->save();
 
