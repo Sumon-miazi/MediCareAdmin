@@ -53,6 +53,8 @@ Route::middleware([ApiKey::class])->group(function () {
     Route::post('/addHospital', 'HospitalController@store');
 
     //Doctor table route
+    Route::post('/signUpDoctor', 'DoctorController@store');
+    Route::post('/getDoctorDataByUid', 'DoctorController@getDoctorDataByUid');
     Route::post('/getAllDoctorByHospitalId', 'DoctorController@getAllDoctorByHospitalId');
 
     //Doctor chamber route

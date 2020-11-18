@@ -16,7 +16,8 @@ class CreatePatientsTable extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
             $table->string('uid')->default('');
-            $table->string('name');
+            $table->string('name')->nullable();
+            $table->string('image')->nullable();;
             $table->string('gender')->default('');
             $table->boolean('is_blood_donor')->default(false);
             $table->date("dob")->nullable();

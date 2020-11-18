@@ -11,20 +11,25 @@ class CreateDoctorsTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image')->nullable();
+            $table->string('bmdcRegNo');
+            $table->boolean('approved')->default(false);
+            $table->string('specialist');
             $table->string('uid')->nullable();
             $table->string('gender');
-            $table->foreignId('hospital_id')->constrained('hospitals')->onDelete('cascade')->nullable();
-            $table->string('about');
-            $table->string('review')->nullable();
+            $table->foreignId('hospital_id')->nullable()->constrained('hospitals')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('about')->nullable();
             $table->date('dob')->nullable();
-            $table->longText('education_history');
+            $table->mediumText('educationHistory');
             $table->mediumText('address');
-            $table->string('phone');
+            $table->string('email');
+            $table->string('phone')->nullable();
             $table->string('token')->nullable();
             $table->timestamps();
         });

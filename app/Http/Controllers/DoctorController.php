@@ -39,6 +39,30 @@ class DoctorController extends Controller
         return response()->json(['status' => $status, 'data' => $hospital->doctors, 'message' => 'all doctor by hospital id sent successfully']);
     }
 
+
+
+
+    public function getDoctorDataByUid(Request $request)
+    {
+        $status = false;
+        $validator = Validator()->make($request->all(), [
+            'uid' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            $message = $validator->errors()->all();
+            return response()->json(['status' => $status, 'message' => $message]);
+        }
+
+        if (Doctor::where('uid', $request->uid)->exists()) {
+            $doctor = Doctor::where("uid", $request->uid)->first();
+            $status = true;
+            return response()->json(['status' => $status, 'data' => $doctor, 'message' => 'doctor found']);
+        } else {
+            $status = false;
+            return response()->json(['status' => $status, 'data' => null, 'message' => 'user not found']);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -57,7 +81,60 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $status = false;
+        $validator = Validator()->make($request->all(), [
+            'name' =>'required',
+            'uid' =>'required',
+            'gender' =>'required',
+            'bmdcRegNo' =>'required',
+            'address' =>'required',
+            'email' =>'required',
+        ]);
+
+        if ($validator->fails()) {
+            $message = $validator->errors()->all();
+            return response()->json(['status' => $status, 'message' => $message]);
+        }
+
+
+        if (Doctor::where('uid', $request->uid)->exists()) {
+            $doctor = Doctor::where("uid", $request->uid)->first();
+            $doctor->name = $request->get('name');
+            $doctor->gender = $request->get('gender');
+            $doctor->bmdcRegNo = $request->get('bmdcRegNo');
+            $doctor->specialist = $request->get('specialist');
+            $doctor->about = $request->get('about');
+            $doctor->educationHistory = $request->get('educationHistory');
+            $doctor->email = $request->get('email');
+            $doctor->address = $request->get('address');
+            $doctor->phone = $request->get('phone');
+            $doctor->token = $request->get('token');
+            $doctor->save();
+
+            $status = true;
+            return response()->json(['status' => $status, 'data' => $doctor, 'message' => 'doctor found']);
+        }
+
+        $doctor = new Doctor([
+            'uid' => $request->get('uid'),
+            'name' => $request->get('name'),
+            'bmdcRegNo' => $request->get('bmdcRegNo'),
+            'specialist' => $request->get('specialist'),
+            'gender' => $request->get('gender'),
+            'about' => $request->get('about'),
+            'educationHistory' => $request->get('educationHistory'),
+            'address' => $request->get('address'),
+            'email' => $request->get('email'),
+            'phone' => $request->get('phone'),
+            'token' => $request->get('token')
+        ]);
+
+        $doctor->save();
+
+
+        $status = true;
+        return response()->json(['status' => $status, 'data' => $doctor, 'message' => 'doctor added successfully']);
+
     }
 
     /**

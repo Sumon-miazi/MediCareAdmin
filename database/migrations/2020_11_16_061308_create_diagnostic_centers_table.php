@@ -17,6 +17,8 @@ class CreateDiagnosticCentersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->nullable();
             $table->string('name');
+            $table->boolean('approved')->default(false);
+            $table->string('image')->nullable();
             $table->string('uid')->nullable();
             $table->mediumText('services');
             $table->string('address');

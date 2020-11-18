@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Doctor extends Model
 {
     protected $fillable = [
+        'uid',
         'name',
-        'hospital_id',
-        'dob',
-        'education_history',
+        'bmdcRegNo',
+        'specialist',
+        'gender',
+        'about',
+        'educationHistory',
         'address',
-        'phone'
+        'email',
+        'phone',
+        'token'
     ];
 
     public function doctor_chambers()
