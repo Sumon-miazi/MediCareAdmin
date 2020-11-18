@@ -17,9 +17,11 @@ class CreateDiagnosticCentersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->nullable();
             $table->string('name');
+            $table->string('uid')->nullable();
             $table->mediumText('services');
             $table->string('address');
             $table->string('phone');
+            $table->string('token')->nullable();
             $table->decimal('lat', 10, 7);
             $table->decimal('long', 10, 7);
             $table->timestamps();

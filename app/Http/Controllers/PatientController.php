@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\BloodDonor;
 use App\Patient;
+use App\BloodBank;
+use App\Doctor;
+use App\DiagnosticCenter;
+
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -106,7 +110,6 @@ class PatientController extends Controller
         $status = true;
         return response()->json(['status' => $status, 'data' => $patient, 'message' => 'Patient added successfully']);
 
-
     }
 
 
@@ -146,14 +149,28 @@ class PatientController extends Controller
             return response()->json(['status' => $status, 'message' => $message]);
         }
 
+        $status = true;
+
         if (Patient::where('uid', $request->uid)->exists()) {
-            //$student = Student::where('uid', $request->uid)->get();
-            //return json_encode(['success' => 'true','data' => $student]);
-            $status = true;
-            return response()->json(['status' => $status, 'message' => 'patient found']);
-        } else {
+            $data = Patient::where('uid', $request->uid)->first();
+            return response()->json(['status' => $status, 'data' => $data ,'message' => 'user found', 'userType' => 'patient']);
+        }
+
+        else if (Doctor::where('uid', $request->uid)->exists()) {
+            $data = Doctor::where('uid', $request->uid)->first();
+            return response()->json(['status' => $status, 'data' => $data ,'message' => 'user found', 'userType' => 'doctor']);
+        }
+        else if (BloodBank::where('uid', $request->uid)->exists()) {
+            $data = BloodBank::where('uid', $request->uid)->first();
+            return response()->json(['status' => $status, 'data' => $data ,'message' => 'user found', 'userType' => 'bloodBank']);
+        }
+        else if (DiagnosticCenter::where('uid', $request->uid)->exists()) {
+            $data = Patient::where('uid', $request->uid)->first();
+            return response()->json(['status' => $status, 'data' => $data ,'message' => 'user found', 'userType' => 'diagnosticCenter']);
+        }
+        else {
             $status = false;
-            return response()->json(['status' => $status, 'message' => 'patient not found']);
+            return response()->json(['status' => $status, 'message' => 'user not found']);
         }
     }
 

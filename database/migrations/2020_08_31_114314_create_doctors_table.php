@@ -16,13 +16,16 @@ class CreateDoctorsTable extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('hospital_id')->constrained('hospitals')->onDelete('cascade');
+            $table->string('uid')->nullable();
+            $table->string('gender');
+            $table->foreignId('hospital_id')->constrained('hospitals')->onDelete('cascade')->nullable();
             $table->string('about');
-            $table->string('review');
-            $table->date('dob');
+            $table->string('review')->nullable();
+            $table->date('dob')->nullable();
             $table->longText('education_history');
             $table->mediumText('address');
             $table->string('phone');
+            $table->string('token')->nullable();
             $table->timestamps();
         });
     }

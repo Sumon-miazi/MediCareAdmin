@@ -16,9 +16,14 @@ class CreateBloodBanksTable extends Migration
         Schema::create('blood_banks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('uid')->nullable();
+            $table->string('image')->nullable();
             $table->mediumText('about');
             $table->mediumText('address');
+            $table->string('email');
             $table->string('phone');
+            $table->string('token')->nullable();
+            $table->boolean('approved')->default(false);
             $table->decimal('lat', 10, 7);
             $table->decimal('long', 10, 7);
             $table->timestamps();

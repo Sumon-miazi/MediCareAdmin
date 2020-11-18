@@ -18,10 +18,7 @@ class CreateDoctorChambersTable extends Migration
             $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
             $table->foreignId('hospital_id')->constrained('hospitals')->onDelete('cascade');
             $table->string('visit_fee');
-            //  $table->mediumText('address');
             $table->string('phone');
-            // $table->decimal('lat', 10, 7);
-            // $table->decimal('long', 10, 7);
             $table->timestamps();
         });
     }

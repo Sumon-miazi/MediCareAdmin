@@ -24,6 +24,7 @@ Route::middleware([ApiKey::class])->group(function () {
     // Patient table route
     Route::post('/signUpPatient', 'PatientController@store');
     Route::post('/getPatientDetailsByUid', 'PatientController@getPatientDetailsByUid');
+    
     Route::post('/checkUserExistenceByUid', 'PatientController@checkUserExistenceByUid');
 
 
@@ -35,7 +36,10 @@ Route::middleware([ApiKey::class])->group(function () {
     Route::post('/addBloodDonor', 'BloodDonorController@addBloodDonor');
     Route::post('/getDonorList', 'BloodDonorController@getDonorList');
 
+    // Blood bank
     Route::post('/getAllBloodBank', 'BloodBankController@getAllBloodBank');
+    Route::post('/getBloodBankDataByUid', 'BloodBankController@getBloodBankDataByUid');
+    Route::post('/signUpBloodBank', 'BloodBankController@store');
     
     // Blood request controller
     Route::post('/addNewBloodRequest', 'BloodRequestController@addNewBloodRequest');
