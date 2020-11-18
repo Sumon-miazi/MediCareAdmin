@@ -20,7 +20,7 @@ class ApiKey
             echo json_encode(['success' => $status,'message' => 'api key needed']);
             exit();
         }
-        else if($request->api_key != env('API_KEY')){
+        else if(trim($request->api_key,'"') != env('API_KEY')){
             echo json_encode(['success' => $status,'message' => 'wrong api key']);
             exit();
         }

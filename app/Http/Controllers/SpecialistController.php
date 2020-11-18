@@ -15,7 +15,8 @@ class SpecialistController extends Controller
      */
     public function index()
     {
-        //
+        $specialist = Specialist::all();
+        return response()->json(['status' => 'true', 'data' => $specialist, 'message' => 'all specialist return']);
     }
 
     /**
@@ -28,15 +29,23 @@ class SpecialistController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
+
+    public function getAllDoctorBySpecialistId(Request $request)
     {
-        //
+        $status = false;
+        $validator = Validator()->make($request->all(), [
+            'id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            $message = $validator->errors()->all();
+            return response()->json(['status' => $status, 'message' => $message]);
+        }
+
+        $specialist = Specialist::find($request->id);
+        $doctors = $specialist->doctors;
+        $status = true;
+        return response()->json(['status' => $status, 'data' => $doctors, 'message' => 'all doctor related to specialist has returned']);
     }
 
     /**

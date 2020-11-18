@@ -15,7 +15,7 @@ class BloodBankController extends Controller
      */
     public function getAllBloodBank()
     {
-        $allBloodBank = BloodBank::all();
+        $allBloodBank = BloodBank::where('approved', 1)->get();
         return response()->json(['status' => 'true', 'data' => $allBloodBank, 'message' => 'All blood bank']);
     }
 

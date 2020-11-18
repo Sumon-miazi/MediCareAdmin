@@ -25,7 +25,7 @@ class DoctorController extends Controller
         $status = false;
 
         $validator = Validator()->make($request->all(), [
-            'hospital_id' => 'required',
+            'id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -34,7 +34,7 @@ class DoctorController extends Controller
         }
 
         $status = true;
-        $hospital = Hospital::find($request->hospital_id);
+        $hospital = Hospital::find($request->id);
 
         return response()->json(['status' => $status, 'data' => $hospital->doctors, 'message' => 'all doctor by hospital id sent successfully']);
     }

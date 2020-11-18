@@ -131,7 +131,7 @@ class PatientController extends Controller
             return response()->json(['status' => $status, 'data' => $patient, 'message' => 'patient found']);
         } else {
             $status = false;
-            return response()->json(['status' => $status, 'data' => null, 'message' => 'patient not found']);
+            return response()->json(['status' => $status, 'data' => null, 'message' => 'user not found']);
         }
     }
 
