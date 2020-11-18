@@ -101,7 +101,7 @@ class BloodBankController extends Controller
                     ]);
                     $extension = $request->image->extension();
                     $request->image->storeAs('/public/bloodBank', $request->get('uid').".".$extension);
-                    $url = Storage::url($request->get('uid').".".$extension);
+                    $url = Storage::url('bloodBank/' . $request->get('uid').".".$extension);
                 }
             }
 
@@ -135,7 +135,7 @@ class BloodBankController extends Controller
                 ]);
                 $extension = $request->image->extension();
                 $request->image->storeAs('/public/bloodBank', $request->get('uid').".".$extension);
-                $url = Storage::url($request->get('uid').".".$extension);
+                $url = Storage::url('bloodBank/' . $request->get('uid').".".$extension);
             }
         }
 

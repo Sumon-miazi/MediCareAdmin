@@ -100,7 +100,7 @@ class DiagnosticCenterController extends Controller
                     ]);
                     $extension = $request->image->extension();
                     $request->image->storeAs('/public/diagnostic', $request->get('uid').".".$extension);
-                    $url = Storage::url($request->get('uid').".".$extension);
+                    $url = Storage::url('diagnostic/' . $request->get('uid').".".$extension);
                 }
             }
             $diagnosticCenter->image = $url;
@@ -132,7 +132,7 @@ class DiagnosticCenterController extends Controller
                 ]);
                 $extension = $request->image->extension();
                 $request->image->storeAs('/public/diagnostic', $request->get('uid').".".$extension);
-                $url = Storage::url($request->get('uid').".".$extension);
+                $url = Storage::url('diagnostic/' . $request->get('uid').".".$extension);
             }
         }
         $diagnosticCenter->image = $url;

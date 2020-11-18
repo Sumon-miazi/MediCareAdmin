@@ -123,7 +123,7 @@ class DoctorController extends Controller
                     ]);
                     $extension = $request->image->extension();
                     $request->image->storeAs('/public/doctor', $request->get('uid').".".$extension);
-                    $url = Storage::url($request->get('uid').".".$extension);
+                    $url = Storage::url('doctor/' . $request->get('uid').".".$extension);
                 }
             }
 
@@ -160,7 +160,7 @@ class DoctorController extends Controller
                 ]);
                 $extension = $request->image->extension();
                 $request->image->storeAs('/public/doctor', $request->get('uid').".".$extension);
-                $url = Storage::url($request->get('uid').".".$extension);
+                $url = Storage::url('doctor/' . $request->get('uid').".".$extension);
             }
         }
 

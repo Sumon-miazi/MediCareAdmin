@@ -80,7 +80,7 @@ class PatientController extends Controller
                     ]);
                     $extension = $request->image->extension();
                     $request->image->storeAs('/public/patient', $request->get('uid').".".$extension);
-                    $url = Storage::url($request->get('uid').".".$extension);
+                    $url = Storage::url('patient/' . $request->get('uid').".".$extension);
                 }
             }
 
@@ -127,7 +127,7 @@ class PatientController extends Controller
                 ]);
                 $extension = $request->image->extension();
                 $request->image->storeAs('/public/patient', $request->get('uid').".".$extension);
-                $url = Storage::url($request->get('uid').".".$extension);
+                $url = Storage::url('patient/' . $request->get('uid').".".$extension);
             }
         }
         
