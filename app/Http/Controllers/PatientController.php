@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Kreait\Firebase\Messaging\Notification;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 
 class PatientController extends Controller
 {
@@ -66,6 +68,25 @@ class PatientController extends Controller
             $patient->address = $request->get('address');
             $patient->phone = $request->get('phone');
             $patient->token = $request->get('token');
+                    
+            $url = null;
+
+            if ($request->hasFile('image') && $request->hasFile('image') != null) {
+                //  Let's do everything here
+                if ($request->file('image')->isValid()) {
+                    //
+                    $validated = $request->validate([
+                        'image' => 'mimes:jpeg,png',
+                    ]);
+                    $extension = $request->image->extension();
+                    $request->image->storeAs('/public/patient', $request->get('uid').".".$extension);
+                    $url = Storage::url($request->get('uid').".".$extension);
+                }
+            }
+
+            $patient->image = $url;
+
+
             $patient->save();
 
 
@@ -94,6 +115,23 @@ class PatientController extends Controller
             'phone' => $request->get('phone'),
             'token' => $request->get('token')
         ]);
+
+        $url = null;
+
+        if ($request->hasFile('image') && $request->hasFile('image') != null) {
+            //  Let's do everything here
+            if ($request->file('image')->isValid()) {
+                //
+                $validated = $request->validate([
+                    'image' => 'mimes:jpeg,png',
+                ]);
+                $extension = $request->image->extension();
+                $request->image->storeAs('/public/patient', $request->get('uid').".".$extension);
+                $url = Storage::url($request->get('uid').".".$extension);
+            }
+        }
+        
+        $patient->image = $url;
 
         $patient->save();
 
