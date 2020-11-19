@@ -14,7 +14,7 @@ use Illuminate\Http\Response;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Kreait\Firebase\Messaging\Notification;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Session;
+use Image;
 
 class PatientController extends Controller
 {
@@ -69,22 +69,26 @@ class PatientController extends Controller
             $patient->phone = $request->get('phone');
             $patient->token = $request->get('token');
                     
-            $url = null;
 
-            if ($request->hasFile('image') && $request->hasFile('image') != null) {
+            if ($request->hasFile('image')) {
                 //  Let's do everything here
                 if ($request->file('image')->isValid()) {
                     //
                     $validated = $request->validate([
-                        'image' => 'mimes:jpeg,png',
+                        'image' => 'mimes:jpeg,png,svg',
                     ]);
                     $extension = $request->image->extension();
-                    $request->image->storeAs('/public/patient', $request->get('uid').".".$extension);
-                    $url = Storage::url('patient/' . $request->get('uid').".".$extension);
+
+                    $file = $request->file('image');
+                    $fileNameToStore = $request->get('uid').".".$extension;
+
+                    $save = $this->resizeImage($file, $fileNameToStore);
+
+                    if($save){
+                        $patient->image = 'patients/' . $fileNameToStore;
+                    }
                 }
             }
-
-            $patient->image = $url;
 
 
             $patient->save();
@@ -116,22 +120,29 @@ class PatientController extends Controller
             'token' => $request->get('token')
         ]);
 
-        $url = null;
 
         if ($request->hasFile('image') && $request->hasFile('image') != null) {
             //  Let's do everything here
             if ($request->file('image')->isValid()) {
                 //
                 $validated = $request->validate([
-                    'image' => 'mimes:jpeg,png',
+                    'image' => 'mimes:jpeg,png,svg',
                 ]);
                 $extension = $request->image->extension();
-                $request->image->storeAs('/public/patient', $request->get('uid').".".$extension);
-                $url = Storage::url('patient/' . $request->get('uid').".".$extension);
+
+                $file = $request->file('image');
+                $fileNameToStore = $request->get('uid').".".$extension;
+
+                $save = $this->resizeImage($file, $fileNameToStore);
+
+               // $request->image->storeAs('/public/patients', $fileNameToStore);
+                if($save){
+                    $patient->image = 'patients/' . $fileNameToStore;
+                }
             }
         }
         
-        $patient->image = $url;
+        
 
         $patient->save();
 
@@ -149,6 +160,21 @@ class PatientController extends Controller
         return response()->json(['status' => $status, 'data' => $patient, 'message' => 'Patient added successfully']);
 
     }
+
+    public function resizeImage($file, $fileNameToStore) {
+      // Resize image
+      $resize = Image::make($file)->resize(200, null, function ($constraint) {
+        $constraint->aspectRatio();
+      })->encode('jpg');
+
+      $save = Storage::put("public/patients/{$fileNameToStore}", $resize->__toString());
+
+      if($save) {
+        return true;
+      }
+      return false;
+    }
+
 
 
     public function getPatientDetailsByUid(Request $request)

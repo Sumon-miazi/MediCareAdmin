@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\DiagnosticCenter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Session;
+use Image;
 
 class DiagnosticCenterController extends Controller
 {
@@ -89,21 +89,27 @@ class DiagnosticCenterController extends Controller
             $diagnosticCenter->lat = $request->get('lat');
             $diagnosticCenter->long = $request->get('long');
 
-            $url = null;
-
-            if ($request->hasFile('image')) {
+            if ($request->hasFile('image') && $request->hasFile('image') != null) {
                 //  Let's do everything here
                 if ($request->file('image')->isValid()) {
                     //
                     $validated = $request->validate([
-                        'image' => 'mimes:jpeg,png',
+                        'image' => 'mimes:jpeg,png,svg',
                     ]);
                     $extension = $request->image->extension();
-                    $request->image->storeAs('/public/diagnostic', $request->get('uid').".".$extension);
-                    $url = Storage::url('diagnostic/' . $request->get('uid').".".$extension);
+
+                    $file = $request->file('image');
+                    $fileNameToStore = $request->get('uid').".".$extension;
+
+                    $save = $this->resizeImage($file, $fileNameToStore);
+
+                   // $request->image->storeAs('/public/patients', $fileNameToStore);
+                    if($save){
+                        $diagnosticCenter->image = 'diagnostic-centers/' . $fileNameToStore;
+                    }
                 }
             }
-            $diagnosticCenter->image = $url;
+
             $diagnosticCenter->save();
 
             return response()->json(['status' => $status, 'data' => $diagnosticCenter, 'message' => 'diagnostic center updated successfully']);
@@ -121,24 +127,44 @@ class DiagnosticCenterController extends Controller
             'long' =>  $request->get('long')
         ]);
 
-        $url = null;
-
         if ($request->hasFile('image') && $request->hasFile('image') != null) {
             //  Let's do everything here
             if ($request->file('image')->isValid()) {
                 //
                 $validated = $request->validate([
-                    'image' => 'mimes:jpeg,png',
+                    'image' => 'mimes:jpeg,png,svg',
                 ]);
                 $extension = $request->image->extension();
-                $request->image->storeAs('/public/diagnostic', $request->get('uid').".".$extension);
-                $url = Storage::url('diagnostic/' . $request->get('uid').".".$extension);
+
+                $file = $request->file('image');
+                $fileNameToStore = $request->get('uid').".".$extension;
+
+                $save = $this->resizeImage($file, $fileNameToStore);
+
+               // $request->image->storeAs('/public/patients', $fileNameToStore);
+                if($save){
+                    $diagnosticCenter->image = 'diagnostic-centers/' . $fileNameToStore;
+                }
             }
         }
-        $diagnosticCenter->image = $url;
+
         $diagnosticCenter->save();
 
         return response()->json(['status' => $status, 'data' => $diagnosticCenter, 'message' => 'diagnostic center added successfully']);
+    }
+
+    public function resizeImage($file, $fileNameToStore) {
+      // Resize image
+      $resize = Image::make($file)->resize(200, null, function ($constraint) {
+        $constraint->aspectRatio();
+      })->encode('jpg');
+
+      $save = Storage::put("public/diagnostic-centers/{$fileNameToStore}", $resize->__toString());
+
+      if($save) {
+        return true;
+      }
+      return false;
     }
 
     /**

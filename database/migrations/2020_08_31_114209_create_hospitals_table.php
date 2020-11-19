@@ -16,6 +16,8 @@ class CreateHospitalsTable extends Migration
         Schema::create('hospitals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('approved')->default(false);
+            $table->string('image')->nullable();
             $table->mediumText('address');
             $table->string('phone');
             $table->decimal('lat', 10, 7);

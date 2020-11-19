@@ -6,7 +6,7 @@ use App\BloodBank;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Session;
+use Image;
 
 class BloodBankController extends Controller
 {
@@ -90,22 +90,26 @@ class BloodBankController extends Controller
             $bloodBank->lat = $request->get('lat');
             $bloodBank->long = $request->get('long');
 
-            $url = null;
-
-            if ($request->hasFile('image') && $request->hasFile('image') != null) {
+            if ($request->hasFile('image')) {
                 //  Let's do everything here
                 if ($request->file('image')->isValid()) {
                     //
                     $validated = $request->validate([
-                        'image' => 'mimes:jpeg,png',
+                        'image' => 'mimes:jpeg,png,svg',
                     ]);
                     $extension = $request->image->extension();
-                    $request->image->storeAs('/public/bloodBank', $request->get('uid').".".$extension);
-                    $url = Storage::url('bloodBank/' . $request->get('uid').".".$extension);
+
+                    $file = $request->file('image');
+                    $fileNameToStore = $request->get('uid').".".$extension;
+
+                    $save = $this->resizeImage($file, $fileNameToStore);
+
+                   // $request->image->storeAs('/public/patients', $fileNameToStore);
+                    if($save){
+                        $bloodBank->image = 'blood-banks/' . $fileNameToStore;
+                    }
                 }
             }
-
-            $bloodBank->image = $url;
 
             $bloodBank->save();
 
@@ -124,26 +128,46 @@ class BloodBankController extends Controller
             'long' =>  $request->get('long')
         ]);
 
-        $url = null;
 
         if ($request->hasFile('image') && $request->hasFile('image') != null) {
             //  Let's do everything here
             if ($request->file('image')->isValid()) {
                 //
                 $validated = $request->validate([
-                    'image' => 'mimes:jpeg,png',
+                    'image' => 'mimes:jpeg,png,svg',
                 ]);
                 $extension = $request->image->extension();
-                $request->image->storeAs('/public/bloodBank', $request->get('uid').".".$extension);
-                $url = Storage::url('bloodBank/' . $request->get('uid').".".$extension);
+
+                $file = $request->file('image');
+                $fileNameToStore = $request->get('uid').".".$extension;
+
+                $save = $this->resizeImage($file, $fileNameToStore);
+
+               // $request->image->storeAs('/public/patients', $fileNameToStore);
+                if($save){
+                    $bloodBank->image = 'blood-banks/' . $fileNameToStore;
+                }
             }
         }
-
-        $bloodBank->image = $url;
 
         $bloodBank->save();
 
         return response()->json(['status' => $status, 'data' => $bloodBank, 'message' => 'blood bank added successfully']);
+    }
+
+
+    public function resizeImage($file, $fileNameToStore) {
+      // Resize image
+      $resize = Image::make($file)->resize(200, null, function ($constraint) {
+        $constraint->aspectRatio();
+      })->encode('jpg');
+
+      $save = Storage::put("public/blood-banks/{$fileNameToStore}", $resize->__toString());
+
+      if($save) {
+        return true;
+      }
+      return false;
     }
 
     /**

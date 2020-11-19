@@ -7,7 +7,7 @@ use App\Hospital;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Session;
+use Image;
 
 class DoctorController extends Controller
 {
@@ -112,22 +112,26 @@ class DoctorController extends Controller
             $doctor->phone = $request->get('phone');
             $doctor->token = $request->get('token');
 
-            $url = null;
-
             if ($request->hasFile('image') && $request->hasFile('image') != null) {
                 //  Let's do everything here
                 if ($request->file('image')->isValid()) {
                     //
                     $validated = $request->validate([
-                        'image' => 'mimes:jpeg,png',
+                        'image' => 'mimes:jpeg,png,svg',
                     ]);
                     $extension = $request->image->extension();
-                    $request->image->storeAs('/public/doctor', $request->get('uid').".".$extension);
-                    $url = Storage::url('doctor/' . $request->get('uid').".".$extension);
+
+                    $file = $request->file('image');
+                    $fileNameToStore = $request->get('uid').".".$extension;
+
+                    $save = $this->resizeImage($file, $fileNameToStore);
+
+                   // $request->image->storeAs('/public/patients', $fileNameToStore);
+                    if($save){
+                        $doctor->image = 'doctors/' . $fileNameToStore;
+                    }
                 }
             }
-
-            $doctor->image = $url;
 
             $doctor->save();
 
@@ -149,22 +153,26 @@ class DoctorController extends Controller
             'token' => $request->get('token')
         ]);
 
-        $url = null;
-
         if ($request->hasFile('image') && $request->hasFile('image') != null) {
             //  Let's do everything here
             if ($request->file('image')->isValid()) {
                 //
                 $validated = $request->validate([
-                    'image' => 'mimes:jpeg,png',
+                    'image' => 'mimes:jpeg,png,svg',
                 ]);
                 $extension = $request->image->extension();
-                $request->image->storeAs('/public/doctor', $request->get('uid').".".$extension);
-                $url = Storage::url('doctor/' . $request->get('uid').".".$extension);
+
+                $file = $request->file('image');
+                $fileNameToStore = $request->get('uid').".".$extension;
+
+                $save = $this->resizeImage($file, $fileNameToStore);
+
+               // $request->image->storeAs('/public/patients', $fileNameToStore);
+                if($save){
+                    $doctor->image = 'doctors/' . $fileNameToStore;
+                }
             }
         }
-
-        $doctor->image = $url;
 
         $doctor->save();
 
@@ -172,6 +180,20 @@ class DoctorController extends Controller
         $status = true;
         return response()->json(['status' => $status, 'data' => $doctor, 'message' => 'doctor added successfully']);
 
+    }
+
+    public function resizeImage($file, $fileNameToStore) {
+      // Resize image
+      $resize = Image::make($file)->resize(200, null, function ($constraint) {
+        $constraint->aspectRatio();
+      })->encode('jpg');
+
+      $save = Storage::put("public/doctors/{$fileNameToStore}", $resize->__toString());
+
+      if($save) {
+        return true;
+      }
+      return false;
     }
 
     /**
