@@ -15,4 +15,11 @@ class Appointment extends Model
     ];
 
     protected $dates = ['appointmentTime'];
+
+
+    public function reports()
+    {
+        return $this->hasMany('App\Report');
+    }
+
 }

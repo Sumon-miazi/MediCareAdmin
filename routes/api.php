@@ -66,6 +66,9 @@ Route::middleware([ApiKey::class])->group(function () {
     Route::post('/getAllDiagnosticCenter', 'DiagnosticCenterController@index');
     Route::post('/getDiagnosticCenterDataByUid', 'DiagnosticCenterController@getDiagnosticCenterDataByUid');
 
+    // Report
+    Route::post('/orderTest', 'ReportController@orderTest');
+
     // Specialist
     Route::post('/getAllSpecialist', 'SpecialistController@index');
     Route::post('/getAllDoctorBySpecialistId', 'SpecialistController@getAllDoctorBySpecialistId');
