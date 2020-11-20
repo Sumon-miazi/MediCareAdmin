@@ -19,7 +19,7 @@ class CreateReportsTable extends Migration
             $table->foreignId('appointment_id')->nullable()->constrained('appointments')->onDelete('cascade')->nullable();
             $table->foreignId('patient_id')->constrained('patients')->onDelete('cascade')->nullable();
             $table->string('title');
-            $table->longText('file')->nullable();
+            $table->json('file')->nullable();
             $table->boolean('complete')->default(false);
             $table->timestamps();
         });

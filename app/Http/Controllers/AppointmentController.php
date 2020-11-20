@@ -110,4 +110,25 @@ class AppointmentController extends Controller
         return response()->json(['status' => $status,'data' => $appointments, 'oldData' => $oldAppointments, 'message' => 'Appointment return sucessfully']);
     }
 
+    public function getAnAppointmentReports(Request $request)
+    {
+        date_default_timezone_set('Asia/Dhaka');
+        $status = false;
+        $validator = Validator()->make($request->all(), [
+            'id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $message = $validator->errors()->all();
+            return response()->json(['status' => $status, 'message' => $message]);
+        }
+
+        $appointment = Appointment::find($request->get('id'));
+
+        $reports = $appointment->reports->first();
+        $reports->file = json_decode($reports->file);
+
+        $status = true;
+        return response()->json(['status' => $status,'data' => $reports , 'message' => 'Appointment reports return sucessfully']);
+    }
 }

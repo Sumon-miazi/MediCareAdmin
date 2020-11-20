@@ -12,6 +12,23 @@ class Report extends Model
         'title'
     ];
 
+    protected $casts = [
+       // 'file' => 'array',
+    ];
+/*
+    public function getFileAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function setFirstNameAttribute($value)
+    {
+        $this->attributes['file'] = json_encode($value);
+    }
+*/
+
+
+    
     public function patient()
     {
         return $this->belongsTo('App\Patient');
