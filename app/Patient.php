@@ -34,4 +34,9 @@ class Patient extends Model
     {
         return $this->hasMany('App\Report');
     }
+
+    public function appointments()
+    {
+        return $this->hasMany('App\Report');
+    }
 }

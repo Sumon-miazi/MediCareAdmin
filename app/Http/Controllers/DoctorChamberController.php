@@ -54,7 +54,7 @@ class DoctorChamberController extends Controller
         $status = false;
 
         $validator = Validator()->make($request->all(), [
-            'doctor_id' => 'required',
+            'id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -64,8 +64,8 @@ class DoctorChamberController extends Controller
 //return $request;
         $status = true;
 
-        $doctorChamberArray = Doctor::find($request->doctor_id)->doctor_chambers;
-        // $doctorChamberObj = DoctorChamber::where('doctor_id',$request->doctor_id)->get();
+        $doctorChamberArray = Doctor::find($request->id)->doctor_chambers;
+        // $doctorChamberObj = DoctorChamber::where('id',$request->id)->get();
         foreach ($doctorChamberArray as $doctorChamber) {
             $doctorChamber->hospital;
             $availableDays = $doctorChamber->availableDays;

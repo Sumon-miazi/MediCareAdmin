@@ -10,32 +10,7 @@ use Illuminate\Http\Response;
 
 class AppointmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
     public function bookNewAppointment(Request $request)
     {
         $status = false;
@@ -49,7 +24,7 @@ class AppointmentController extends Controller
             $message = $validator->errors()->all();
             return response()->json(['status' => $status, 'message' => $message]);
         }
-
+        date_default_timezone_set('Asia/Dhaka');
         $appointmentTime = Carbon::create($request->year, $request->month, $request->day, $request->hour, $request->minute, 0);
 
         $appointment = new Appointment([
@@ -65,48 +40,36 @@ class AppointmentController extends Controller
         return response()->json(['status' => $status, 'message' => 'Appointment added sucessfully']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param Appointment $appointment
-     * @return Response
-     */
-    public function show(Appointment $appointment)
+
+    public function getNextAppointment(Request $request)
     {
-        //
+        date_default_timezone_set('Asia/Dhaka');
+        $status = false;
+        $validator = Validator()->make($request->all(), [
+            'id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $message = $validator->errors()->all();
+            return response()->json(['status' => $status, 'message' => $message]);
+        }
+
+        $appointment = Appointment::where('patient_id', $request->get('id'))
+            ->where('appointmentTime', '>=', Carbon::now()->toDateString())
+            ->where('status', 1)
+            ->orderBy('appointmentTime', 'asc')
+            ->first();
+          //  ->take(1)
+           // ->get();
+        if($appointment == null){
+            $status = false;
+            return response()->json(['status' => $status,'data' => null, 'message' => 'Appointment not found']);
+        }
+        $appointment->doctor;
+        $appointment->doctor_chamber->hospital;
+
+        $status = true;
+        return response()->json(['status' => $status,'data' => $appointment, 'message' => 'Appointment return sucessfully']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Appointment $appointment
-     * @return Response
-     */
-    public function edit(Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param Appointment $appointment
-     * @return Response
-     */
-    public function update(Request $request, Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Appointment $appointment
-     * @return Response
-     */
-    public function destroy(Appointment $appointment)
-    {
-        //
-    }
 }

@@ -22,4 +22,14 @@ class Appointment extends Model
         return $this->hasMany('App\Report');
     }
 
+    public function doctor_chamber()
+    {
+        return $this->belongsTo('App\DoctorChamber');
+    }
+
+    public function doctor()
+    {
+        return $this->belongsTo('App\Doctor');
+    }
+
 }
