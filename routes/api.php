@@ -48,6 +48,9 @@ Route::middleware([ApiKey::class])->group(function () {
     //Appointment
     Route::post('/bookNewAppointment', 'AppointmentController@bookNewAppointment');
     Route::post('/getNextAppointment', 'AppointmentController@getNextAppointment');
+    Route::post('/getAllAppointment', 'AppointmentController@getAllAppointment');
+
+
 
     //Hospital table route
     Route::post('/getAllHospital', 'HospitalController@index');

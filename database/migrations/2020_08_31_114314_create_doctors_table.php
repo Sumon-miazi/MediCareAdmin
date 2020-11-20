@@ -24,7 +24,7 @@ class CreateDoctorsTable extends Migration
             $table->string('uid')->nullable();
             $table->string('gender');
             $table->foreignId('hospital_id')->nullable()->constrained('hospitals')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('about')->nullable();
+            $table->mediumText('about')->nullable();
             $table->date('dob')->nullable();
             $table->mediumText('educationHistory');
             $table->mediumText('address');

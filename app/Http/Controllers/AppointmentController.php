@@ -59,8 +59,7 @@ class AppointmentController extends Controller
             ->where('status', 1)
             ->orderBy('appointmentTime', 'asc')
             ->first();
-          //  ->take(1)
-           // ->get();
+
         if($appointment == null){
             $status = false;
             return response()->json(['status' => $status,'data' => null, 'message' => 'Appointment not found']);
@@ -70,6 +69,45 @@ class AppointmentController extends Controller
 
         $status = true;
         return response()->json(['status' => $status,'data' => $appointment, 'message' => 'Appointment return sucessfully']);
+    }
+
+
+    public function getAllAppointment(Request $request)
+    {
+        date_default_timezone_set('Asia/Dhaka');
+        $status = false;
+        $validator = Validator()->make($request->all(), [
+            'id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $message = $validator->errors()->all();
+            return response()->json(['status' => $status, 'message' => $message]);
+        }
+
+        $appointments = Appointment::where('patient_id', $request->get('id'))
+            ->where('appointmentTime', '>=', Carbon::now()->toDateString())
+            ->orderBy('appointmentTime', 'asc')
+            ->get();
+
+        $oldAppointments = Appointment::where('patient_id', $request->get('id'))
+            ->where('appointmentTime', '<', Carbon::now()->toDateString())
+            ->orderBy('appointmentTime', 'asc')
+            ->get();
+
+        foreach ($appointments as $appointment) {
+            $appointment->doctor;
+            $appointment->doctor_chamber->hospital;
+        }
+
+        foreach ($oldAppointments as $oldAppointment) {
+            $oldAppointment->doctor;
+            $oldAppointment->doctor_chamber->hospital;
+        }
+
+
+        $status = true;
+        return response()->json(['status' => $status,'data' => $appointments, 'oldData' => $oldAppointments, 'message' => 'Appointment return sucessfully']);
     }
 
 }
