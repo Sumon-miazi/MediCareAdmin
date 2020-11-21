@@ -144,7 +144,10 @@ return [
         ],
 
         'widgets' => [
-
+            'App\\Widgets\\Hospitals',
+            'App\\Widgets\\Doctors',
+            'App\\Widgets\\DiagnocticCenters',
+           // 'App\\Widgets\\BloodBanks',
         ],
 
     ],
