@@ -10,8 +10,8 @@ class Hospital extends Model
         'name',
         'address',
         'phone',
-        'lat',
-        'long'
+        'latitude',
+        'longitude'
     ];
 
     public function doctors()

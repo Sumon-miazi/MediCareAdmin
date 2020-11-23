@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Patient;
 use App\BloodDonor;
-use Illuminate\Http\JsonResponse;
+use App\Patient;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class BloodDonorController extends Controller
 {
@@ -20,22 +18,6 @@ class BloodDonorController extends Controller
         return response()->json(['status' => 'true', 'data' => $allDonor, 'message' => 'All blood donor']);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
     public function addBloodDonor(Request $request)
     {
         $status = false;
@@ -81,48 +63,4 @@ class BloodDonorController extends Controller
         return response()->json(['status' => $status, 'message' => 'Blood donor added successfully']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param BloodDonor $bloodDonor
-     * @return Response
-     */
-    public function show(BloodDonor $bloodDonor)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param BloodDonor $bloodDonor
-     * @return Response
-     */
-    public function edit(BloodDonor $bloodDonor)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param BloodDonor $bloodDonor
-     * @return Response
-     */
-    public function update(Request $request, BloodDonor $bloodDonor)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param BloodDonor $bloodDonor
-     * @return Response
-     */
-    public function destroy(BloodDonor $bloodDonor)
-    {
-        //
-    }
 }

@@ -4,17 +4,12 @@ namespace App\Http\Controllers;
 
 use App\DiagnosticCenter;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Image;
 
 class DiagnosticCenterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
+
     public function index()
     {
         $diagnostic = DiagnosticCenter::where("approved", 1)->get();
@@ -43,22 +38,6 @@ class DiagnosticCenterController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
     public function store(Request $request)
     {
         $status = false;
@@ -166,50 +145,5 @@ class DiagnosticCenterController extends Controller
         return true;
       }
       return false;
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param DiagnosticCenter $diagnosticCenter
-     * @return Response
-     */
-    public function show(DiagnosticCenter $diagnosticCenter)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param DiagnosticCenter $diagnosticCenter
-     * @return Response
-     */
-    public function edit(DiagnosticCenter $diagnosticCenter)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param DiagnosticCenter $diagnosticCenter
-     * @return Response
-     */
-    public function update(Request $request, DiagnosticCenter $diagnosticCenter)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param DiagnosticCenter $diagnosticCenter
-     * @return Response
-     */
-    public function destroy(DiagnosticCenter $diagnosticCenter)
-    {
-        //
     }
 }

@@ -20,8 +20,8 @@ class CreateHospitalsTable extends Migration
             $table->string('image')->nullable();
             $table->mediumText('address');
             $table->string('phone');
-            $table->decimal('lat', 10, 7);
-            $table->decimal('long', 10, 7);
+            $table->decimal('latitude', 10, 7);
+            $table->decimal('longitude', 10, 7);
             $table->timestamps();
         });
     }

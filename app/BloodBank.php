@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class BloodBank extends Model
 {
     protected $fillable = [
-    	'uid',
+        'uid',
         'name',
         'about',
         'address',
         'email',
         'phone',
         'token',
-        'lat',
-        'long'
+        'latitude',
+        'longitude'
     ];
 }

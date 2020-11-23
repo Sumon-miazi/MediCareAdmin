@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class BloodRequestController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $bloodRequestArray = BloodRequest::all();
@@ -19,27 +15,6 @@ class BloodRequestController extends Controller
             $bloodRequest->patient;
         }
         return response()->json(['status' => 'true', 'data' => $bloodRequestArray, 'message' => 'all blood request']);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
 
@@ -88,41 +63,7 @@ class BloodRequestController extends Controller
             ]);
 
             $bloodRequest->save();
-            
-            return response()->json(['status' => $status, 'data' => $bloodRequest, 'message' => 'Request added successfully']);
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\BloodRequest  $bloodRequest
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(BloodRequest $bloodRequest)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BloodRequest  $bloodRequest
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, BloodRequest $bloodRequest)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\BloodRequest  $bloodRequest
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(BloodRequest $bloodRequest)
-    {
-        //
+        return response()->json(['status' => $status, 'data' => $bloodRequest, 'message' => 'Request added successfully']);
     }
 }
