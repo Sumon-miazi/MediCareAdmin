@@ -8,15 +8,15 @@ class DiagnosticCenter extends Model
 {
 
 	protected $fillable = [
-		'uid',
+        'uid',
         'name',
         'services',
         'address',
         'email',
         'phone',
         'token',
-        'lat',
-        'long'
+        'latitude',
+        'longitude'
     ];
 
 

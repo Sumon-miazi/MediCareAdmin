@@ -24,7 +24,7 @@ Route::middleware([ApiKey::class])->group(function () {
     // Patient table route
     Route::post('/signUpPatient', 'PatientController@store');
     Route::post('/getPatientDetailsByUid', 'PatientController@getPatientDetailsByUid');
-    
+
     Route::post('/checkUserExistenceByUid', 'PatientController@checkUserExistenceByUid');
 
 
@@ -40,11 +40,11 @@ Route::middleware([ApiKey::class])->group(function () {
     Route::post('/getAllBloodBank', 'BloodBankController@getAllBloodBank');
     Route::post('/getBloodBankDataByUid', 'BloodBankController@getBloodBankDataByUid');
     Route::post('/signUpBloodBank', 'BloodBankController@store');
-    
+
     // Blood request controller
     Route::post('/addNewBloodRequest', 'BloodRequestController@addNewBloodRequest');
     Route::post('/getBloodRequest', 'BloodRequestController@index');
-    
+
     //Appointment
     Route::post('/bookNewAppointment', 'AppointmentController@bookNewAppointment');
     Route::post('/getNextAppointment', 'AppointmentController@getNextAppointment');
@@ -77,4 +77,9 @@ Route::middleware([ApiKey::class])->group(function () {
     // Specialist
     Route::post('/getAllSpecialist', 'SpecialistController@index');
     Route::post('/getAllDoctorBySpecialistId', 'SpecialistController@getAllDoctorBySpecialistId');
+
+
+    // Search nearby
+    Route::post('/searchNearbyByNameAndDistance', 'SearchController@searchNearBy');
+    //->withoutMiddleware([ApiKey::class]);
 });

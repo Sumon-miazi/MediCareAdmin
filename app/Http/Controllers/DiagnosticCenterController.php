@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DiagnosticCenter;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Image;
 
@@ -12,7 +13,7 @@ class DiagnosticCenterController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -45,7 +46,7 @@ class DiagnosticCenterController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -55,20 +56,20 @@ class DiagnosticCenterController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
         $status = false;
         $validator = Validator()->make($request->all(), [
-            'name'=>'required',
-            'address'=>'required',
-            'services'=>'required',
-            'phone'=>'required',
-            'email'=>'required',
-            'lat'=>'required',
-            'long'=>'required',
+            'name' => 'required',
+            'address' => 'required',
+            'services' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -86,8 +87,8 @@ class DiagnosticCenterController extends Controller
             $diagnosticCenter->phone = $request->get('phone');
             $diagnosticCenter->email = $request->get('email');
             $diagnosticCenter->token = $request->get('token');
-            $diagnosticCenter->lat = $request->get('lat');
-            $diagnosticCenter->long = $request->get('long');
+            $diagnosticCenter->latitude = $request->get('lat');
+            $diagnosticCenter->longitude = $request->get('long');
 
             if ($request->hasFile('image') && $request->hasFile('image') != null) {
                 //  Let's do everything here
@@ -116,15 +117,15 @@ class DiagnosticCenterController extends Controller
         }
 
         $diagnosticCenter = new DiagnosticCenter([
-            'uid' =>  $request->get('uid'),
-            'name' =>  $request->get('name'),
-            'services' =>  $request->get('services'),
-            'address' =>  $request->get('address'),
-            'phone' =>  $request->get('phone'),
-            'email' =>  $request->get('email'),
-            'token' =>  $request->get('token'),
-            'lat' =>  $request->get('lat'),
-            'long' =>  $request->get('long')
+            'uid' => $request->get('uid'),
+            'name' => $request->get('name'),
+            'services' => $request->get('services'),
+            'address' => $request->get('address'),
+            'phone' => $request->get('phone'),
+            'email' => $request->get('email'),
+            'token' => $request->get('token'),
+            'latitude' => $request->get('lat'),
+            'longitude' => $request->get('long')
         ]);
 
         if ($request->hasFile('image') && $request->hasFile('image') != null) {
@@ -170,8 +171,8 @@ class DiagnosticCenterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\DiagnosticCenter  $diagnosticCenter
-     * @return \Illuminate\Http\Response
+     * @param DiagnosticCenter $diagnosticCenter
+     * @return Response
      */
     public function show(DiagnosticCenter $diagnosticCenter)
     {
@@ -181,8 +182,8 @@ class DiagnosticCenterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\DiagnosticCenter  $diagnosticCenter
-     * @return \Illuminate\Http\Response
+     * @param DiagnosticCenter $diagnosticCenter
+     * @return Response
      */
     public function edit(DiagnosticCenter $diagnosticCenter)
     {
@@ -192,9 +193,9 @@ class DiagnosticCenterController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\DiagnosticCenter  $diagnosticCenter
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param DiagnosticCenter $diagnosticCenter
+     * @return Response
      */
     public function update(Request $request, DiagnosticCenter $diagnosticCenter)
     {
@@ -204,8 +205,8 @@ class DiagnosticCenterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\DiagnosticCenter  $diagnosticCenter
-     * @return \Illuminate\Http\Response
+     * @param DiagnosticCenter $diagnosticCenter
+     * @return Response
      */
     public function destroy(DiagnosticCenter $diagnosticCenter)
     {
