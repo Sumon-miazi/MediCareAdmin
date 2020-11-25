@@ -10,8 +10,32 @@ class SearchController extends Controller
 {
     public function searchNearBy(Request $request)
     {
+        $status = false;
+        $validator = Validator()->make($request->all(), [
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'radius' => 'required',
+            'name' => 'required',
+        ]);
 
-        return $this->findNearestHospitals($request->latitude, $request->longitude, $request->radius);
+        if ($validator->fails()) {
+            $message = $validator->errors()->all();
+            return response()->json(['status' => $status, 'message' => $message]);
+        }
+        $status = true;
+        if($request->name == 'hospitals'){
+            $data =  $this->findNearestHospitals($request->latitude, $request->longitude, $request->radius);
+            return response()->json(['status' => $status, 'data' => $data, 'message' => 'nearest hospitals return']);
+        }
+        else if($request->name == 'diagnostic centers'){
+            $data = $this->findNearestDiagnosticCenters($request->latitude, $request->longitude, $request->radius);
+            return response()->json(['status' => $status, 'data' => $data, 'message' => 'nearest diagnostics return']);
+        }
+        else if($request->name == 'blood banks'){
+            $data = $this->findNearestBloodBanks($request->latitude, $request->longitude, $request->radius);
+            return response()->json(['status' => $status, 'data' => $data, 'message' => 'nearest blood banks return']);
+        }
+        return response()->json(['status' => false, 'message' => "conditions not fulfill"]);
     }
 
 
@@ -21,18 +45,13 @@ class SearchController extends Controller
  * using query builder approach, useful when you want to execute direct query
  * replace 6371000 with 6371 for kilometer and 3956 for miles
  */
-        $hospitals = DB::table('diagnostic_centers')
+        $data = DB::table('hospitals')
             ->selectRaw('id,
-        user_id,
          name,
          approved,
          image,
-         uid,
-         services,
          address,
-         email,
          phone,
-         token,
          latitude,
          longitude,
          ( 6371 * acos( cos( radians(?) )
@@ -47,7 +66,7 @@ class SearchController extends Controller
             ->limit(20)
             ->get();
 
-        return $hospitals;
+        return $data;
     }
 
     private function findNearestDiagnosticCenters($latitude, $longitude, $radius)
@@ -56,7 +75,7 @@ class SearchController extends Controller
  * using query builder approach, useful when you want to execute direct query
  * replace 6371000 with 6371 for kilometer and 3956 for miles
  */
-        $result = DB::table('diagnostic_centers')
+        $data = DB::table('diagnostic_centers')
             ->selectRaw('id,
         user_id,
          name,
@@ -82,7 +101,7 @@ class SearchController extends Controller
             ->limit(20)
             ->get();
 
-        return $result;
+        return $data;
     }
 
     private function findNearestBloodBanks($latitude, $longitude, $radius)
@@ -91,18 +110,18 @@ class SearchController extends Controller
  * using query builder approach, useful when you want to execute direct query
  * replace 6371000 with 6371 for kilometer and 3956 for miles
  */
-        $result = DB::table('diagnostic_centers')
+
+        $data = DB::table('blood_banks')
             ->selectRaw('id,
-        user_id,
          name,
-         approved,
-         image,
          uid,
-         services,
+         image,
+         about,
          address,
          email,
          phone,
          token,
+         approved,
          latitude,
          longitude,
          ( 6371 * acos( cos( radians(?) )
@@ -117,6 +136,6 @@ class SearchController extends Controller
             ->limit(20)
             ->get();
 
-        return $result;
+        return $data;
     }
 }

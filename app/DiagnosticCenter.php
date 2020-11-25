@@ -10,7 +10,7 @@ class DiagnosticCenter extends Model
 	protected $fillable = [
         'uid',
         'name',
-        'services',
+     //   'services',
         'address',
         'email',
         'phone',
@@ -28,5 +28,10 @@ class DiagnosticCenter extends Model
     public function reports()
     {
         return $this->hasMany('App\Report');
+    }
+
+    public function services()
+    {
+        return $this->belongsToMany('App\Service', 'diagnostic_center_services');
     }
 }

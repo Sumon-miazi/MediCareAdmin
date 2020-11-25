@@ -18,32 +18,7 @@ use Image;
 
 class PatientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
     public function store(Request $request)
     {
         $status = false;
@@ -68,7 +43,7 @@ class PatientController extends Controller
             $patient->address = $request->get('address');
             $patient->phone = $request->get('phone');
             $patient->token = $request->get('token');
-                    
+
 
             if ($request->hasFile('image')) {
                 //  Let's do everything here
@@ -141,8 +116,8 @@ class PatientController extends Controller
                 }
             }
         }
-        
-        
+
+
 
         $patient->save();
 

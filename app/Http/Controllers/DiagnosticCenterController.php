@@ -12,8 +12,11 @@ class DiagnosticCenterController extends Controller
 
     public function index()
     {
-        $diagnostic = DiagnosticCenter::where("approved", 1)->get();
-        return response()->json(['status' => 'true', 'data' => $diagnostic, 'message' => 'all diagnostic center return']);
+        $diagnostics = DiagnosticCenter::where("approved", 1)->get();
+        foreach ($diagnostics as $diagnostic) {
+            $diagnostic->services;
+        }
+        return response()->json(['status' => 'true', 'data' => $diagnostics, 'message' => 'all diagnostic center return']);
     }
 
 
@@ -30,6 +33,7 @@ class DiagnosticCenterController extends Controller
 
         if (DiagnosticCenter::where('uid', $request->uid)->exists()) {
             $dc = DiagnosticCenter::where("uid", $request->uid)->first();
+            $dc->services;
             $status = true;
             return response()->json(['status' => $status, 'data' => $dc, 'message' => 'diagnostic center found']);
         } else {
@@ -44,7 +48,7 @@ class DiagnosticCenterController extends Controller
         $validator = Validator()->make($request->all(), [
             'name' => 'required',
             'address' => 'required',
-            'services' => 'required',
+         //   'services' => 'required',
             'phone' => 'required',
             'email' => 'required',
             'latitude' => 'required',
@@ -61,7 +65,7 @@ class DiagnosticCenterController extends Controller
         if (DiagnosticCenter::where('uid', $request->uid)->exists()) {
             $diagnosticCenter = DiagnosticCenter::where("uid", $request->uid)->first();
             $diagnosticCenter->name = $request->get('name');
-            $diagnosticCenter->services = $request->get('services');
+          //  $diagnosticCenter->services = $request->get('services');
             $diagnosticCenter->address = $request->get('address');
             $diagnosticCenter->phone = $request->get('phone');
             $diagnosticCenter->email = $request->get('email');
@@ -98,7 +102,7 @@ class DiagnosticCenterController extends Controller
         $diagnosticCenter = new DiagnosticCenter([
             'uid' => $request->get('uid'),
             'name' => $request->get('name'),
-            'services' => $request->get('services'),
+            //'services' => $request->get('services'),
             'address' => $request->get('address'),
             'phone' => $request->get('phone'),
             'email' => $request->get('email'),
@@ -129,6 +133,7 @@ class DiagnosticCenterController extends Controller
         }
 
         $diagnosticCenter->save();
+        $diagnosticCenter->services;
 
         return response()->json(['status' => $status, 'data' => $diagnosticCenter, 'message' => 'diagnostic center added successfully']);
     }
