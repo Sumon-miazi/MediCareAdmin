@@ -51,6 +51,8 @@ Route::middleware([ApiKey::class])->group(function () {
     Route::post('/getAllAppointment', 'AppointmentController@getAllAppointment');
     Route::post('/getAnAppointmentReports', 'AppointmentController@getAnAppointmentReports');
 
+    Route::post('/getAllReports', 'ReportController@getAllReports');
+
 
 
     //Hospital table route
@@ -82,4 +84,9 @@ Route::middleware([ApiKey::class])->group(function () {
     // Search nearby
     Route::post('/searchNearbyByNameAndDistance', 'SearchController@searchNearBy');
     //->withoutMiddleware([ApiKey::class]);
+
+    // Phamacy
+    Route::post('/getPharmacyDataByUid', 'PharmacyController@getPharmacyDataByUid');
+    Route::post('/signUpPharmacy', 'PharmacyController@store');
+    Route::post('/getAllPharmacies', 'PharmacyController@getAllPharmacies');
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Patient;
 use App\Report;
 use Exception;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -211,5 +212,27 @@ class ReportController extends \TCG\Voyager\Http\Controllers\VoyagerBaseControll
         $report->save();
         $status = true;
         return response()->json(['status' => $status, 'message' => 'Order test submitted successfully']);
+    }
+
+    public function getAllReports(Request $request){
+        $status = false;
+        $validator = Validator()->make($request->all(), [
+            'id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            $message = $validator->errors()->all();
+            return response()->json(['status' => $status, 'message' => $message]);
+        }
+
+        $reports = Report::where('patient_id', $request->id)->where('complete', 1)->get();
+        return response()->json(['status' => $status, 'data' => $reports, 'message' => 'no reports found']);
+
+        foreach ($reports as $report) {
+            $report->file = json_decode($report->file);
+            $report->diagnostic_center;
+        }
+        $status = true;
+        return response()->json(['status' => $status, 'data' => $reports, 'message' => 'reports found']);
     }
 }

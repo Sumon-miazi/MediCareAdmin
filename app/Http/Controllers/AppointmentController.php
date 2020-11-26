@@ -126,6 +126,9 @@ class AppointmentController extends Controller
         $appointment = Appointment::find($request->get('id'));
 
         $reports = $appointment->reports;
+
+        return response()->json(['status' => $status, 'data' => $reports, 'message' => 'no reports found']);
+
         foreach ($reports as $report) {
             $report->file = json_decode($report->file);
             $report->diagnostic_center;

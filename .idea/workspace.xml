@@ -5,24 +5,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="294cc906-9439-4ba8-8a69-88c03c0be223" name="Default Changelist" comment="#Added SearchController&#10;#Renamed lat, long as latitude and longitude of DiagnosticCenter&#10;#Added api to fetch data by user location and radius">
-      <change beforePath="$PROJECT_DIR$/app/BloodBank.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/BloodBank.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Hospital.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Hospital.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AvailableDayAvailableTimeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AvailableDayAvailableTimeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AvailableDayController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AvailableDayController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AvailableDayDoctorChamberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AvailableDayDoctorChamberController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AvailableTimeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AvailableTimeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BloodBankController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BloodBankController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BloodDonorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BloodDonorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BloodRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BloodRequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DiagnosticCenterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DiagnosticCenterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DoctorChamberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DoctorChamberController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DoctorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DoctorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DoctorSpecialistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DoctorSpecialistController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HospitalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HospitalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SpecialistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SpecialistController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_31_114209_create_hospitals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_31_114209_create_hospitals_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_24_180455_create_blood_banks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_24_180455_create_blood_banks_table.php" afterDir="false" />
+    <list default="true" id="294cc906-9439-4ba8-8a69-88c03c0be223" name="Default Changelist" comment="#Renamed lat, long in where these used&#10;#Removed all unnecessary method from controllers">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PatientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +227,7 @@
       <workItem from="1605154168490" duration="3532000" />
       <workItem from="1605162778538" duration="2031000" />
       <workItem from="1605164882189" duration="1760000" />
-      <workItem from="1606130623115" duration="3877000" />
+      <workItem from="1606130623115" duration="5327000" />
     </task>
     <task id="LOCAL-00001" summary="Opened the project in phpstorm">
       <created>1598361974493</created>
@@ -376,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606133992667</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="#Renamed lat, long in where these used&#10;#Removed all unnecessary method from controllers">
+      <created>1606134565440</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1606134565440</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -418,7 +411,8 @@
     <MESSAGE value="#Added api to get patient details and check patient account is already exist or not" />
     <MESSAGE value="#Added blood donor registration in Patient and BloodDonor controller" />
     <MESSAGE value="#Added SearchController&#10;#Renamed lat, long as latitude and longitude of DiagnosticCenter&#10;#Added api to fetch data by user location and radius" />
-    <option name="LAST_COMMIT_MESSAGE" value="#Added SearchController&#10;#Renamed lat, long as latitude and longitude of DiagnosticCenter&#10;#Added api to fetch data by user location and radius" />
+    <MESSAGE value="#Renamed lat, long in where these used&#10;#Removed all unnecessary method from controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="#Renamed lat, long in where these used&#10;#Removed all unnecessary method from controllers" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

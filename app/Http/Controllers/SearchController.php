@@ -35,6 +35,10 @@ class SearchController extends Controller
             $data = $this->findNearestBloodBanks($request->latitude, $request->longitude, $request->radius);
             return response()->json(['status' => $status, 'data' => $data, 'message' => 'nearest blood banks return']);
         }
+        else if($request->name == 'pharmacies'){
+            $data = $this->findNearestPharmacies($request->latitude, $request->longitude, $request->radius);
+            return response()->json(['status' => $status, 'data' => $data, 'message' => 'nearest pharmacies return']);
+        }
         return response()->json(['status' => false, 'message' => "conditions not fulfill"]);
     }
 
@@ -112,6 +116,42 @@ class SearchController extends Controller
  */
 
         $data = DB::table('blood_banks')
+            ->selectRaw('id,
+         name,
+         uid,
+         image,
+         about,
+         address,
+         email,
+         phone,
+         token,
+         approved,
+         latitude,
+         longitude,
+         ( 6371 * acos( cos( radians(?) )
+         * cos( radians( latitude ) )
+         * cos( radians(longitude ) - radians(?)) + sin( radians(?) )
+         * sin( radians( latitude ) ) ))
+         AS distance', [$latitude, $longitude, $latitude])
+            ->where('approved', '=', 1)
+            ->having("distance", "<", $radius)
+            ->orderBy("distance", 'asc')
+            ->offset(0)
+            ->limit(20)
+            ->get();
+
+        return $data;
+    }
+
+
+    private function findNearestPharmacies($latitude, $longitude, $radius)
+    {
+        /*
+ * using query builder approach, useful when you want to execute direct query
+ * replace 6371000 with 6371 for kilometer and 3956 for miles
+ */
+
+        $data = DB::table('pharmacies')
             ->selectRaw('id,
          name,
          uid,
